@@ -15,20 +15,21 @@ public class RequestBasket {
     }
 
     Product product;
-    int numberOfProduct;
+    int quantity;
     double totalBalance;
 
 
 
-    public int getNumberOfProduct() {
-        return numberOfProduct;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setNumberOfProduct(int numberOfProduct) {
-        this.numberOfProduct = numberOfProduct;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getTotalBalance() {
+        totalBalance*=quantity;
         return totalBalance;
     }
 

@@ -9,9 +9,20 @@ public class Basket {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
-@Basic
-@Column(name = "numberOfProduct")
-    int numberOfProduct;
+
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "id=" + id +
+                ", quantity=" + quantity +
+                ", totalBalance=" + totalBalance +
+                ", product=" + product +
+                '}';
+    }
+
+    @Basic
+@Column(name = "quantity")
+    int quantity;
     @Basic
     @Column(name = "totalBalance")
     double totalBalance;
@@ -23,7 +34,7 @@ public class Basket {
     public void setProduct(Product product) {
         this.product = product;
     }
-    @ManyToOne(targetEntity = Product.class)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "productId", referencedColumnName = "id")
     Product product;
 
@@ -36,12 +47,12 @@ public class Basket {
         this.id = id;
     }
 
-    public int getNumberOfProduct() {
-        return numberOfProduct;
+    public int getQuantity() {
+        return quantity;
     }
 
-    public void setNumberOfProduct(int numberOfProduct) {
-        this.numberOfProduct = numberOfProduct;
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     public double getTotalBalance() {

@@ -18,7 +18,20 @@
 .container {
   padding: 2px 16px;
 }
-.container2 {
+.container3 {
     height: 30px;
   background-color: lightblue;
+    display: flex;
+
+    justify-content: center;
+}
+.container2 {
+
+    display: flex;
+    justify-content: center;
+}
+.conta {
+    width: 50%;
+    display: flex;
+    justify-content: right;
 }

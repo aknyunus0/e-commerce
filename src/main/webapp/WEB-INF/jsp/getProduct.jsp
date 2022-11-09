@@ -6,7 +6,30 @@
 <title>Insert title here</title>
 </head>
 <body>
- <div class="container2">
+ <div class="container3">
+     <div class="conta">
+
+         <section class="container4">
+             <h4><b>USER INFO</b></h4>
+         </section>
+
+     </div>
+
+<div class="conta">
+    <section class="container2">
+
+
+<form action="/order">
+
+    <input  type="submit" value="Basket"> </input>
+</form>
+
+        <input  type="submit" value="Logout"> </input>
+
+    </section>
+
+</div>
+
 
   </div>
 	<link href="/css/card1.css" rel="stylesheet"/>
@@ -19,9 +42,9 @@
             <h4><b>${pro.productName}</b></h4>
             <p>${pro.productDetails}</p>
             <p>$${pro.balance}</p>
-              <form action="/addBasket" method="post">
-                  <input type="hidden" id="productId" name="productId" value=${pro.id}>
-                  <input type="hidden" id="numberOfProduct" name="numberOfProduct" value=1>
+              <form action="/addBasket/${pro.id}" method="post">
+                  <label >Quantity:</label>
+                  <input type="text" id="quantity" name="quantity">
                   <input type="hidden" id="totalBalance" name="totalBalance" value=${pro.balance}>
                   <input  type="submit" value="Add Basket"> </input>
               </form>

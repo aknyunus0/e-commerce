@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class homeController {
@@ -34,12 +35,15 @@ public class homeController {
         return mv;
     }
 
-   // @PostMapping("/addBasket" )
-    @RequestMapping(value = "/addBasket",method = RequestMethod.POST)
-    public String addJournalEntry(RequestBasket add) {
+    //@PostMapping("/addBasket/{produc" )
+    @RequestMapping(value = "/addBasket/{productId}",method = RequestMethod.POST)
+    public String addBasket(@PathVariable(value="productId") Long productId, RequestBasket add) {
 
-
-        serviceBasket.saveBasket(add);
+        Optional<Object> comment = ProductRepo.findById(productId).map(product -> {
+            add.setProduct(product);
+            return serviceBasket.saveBasket(add);
+        });
+        //serviceBasket.saveBasket(add);
         return "getProduct";
     }
 
