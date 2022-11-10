@@ -1,43 +1,15 @@
 package com.yunusakin.ecommerce.model;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name="Basket")
+@Table(name = "Basket")
 public class Basket {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
-
-    @Override
-    public String toString() {
-        return "Basket{" +
-                "id=" + id +
-                ", quantity=" + quantity +
-                ", totalBalance=" + totalBalance +
-                ", product=" + product +
-                '}';
-    }
-
-    @Basic
-@Column(name = "quantity")
-    int quantity;
-    @Basic
-    @Column(name = "totalBalance")
-    double totalBalance;
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productId", referencedColumnName = "id")
-    Product product;
-
+    long productId;
+    int sumQuantity;
+    int sumBalance;
 
     public long getId() {
         return id;
@@ -47,22 +19,29 @@ public class Basket {
         this.id = id;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public long getProductId() {
+        return productId;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setProductId(long productId) {
+        this.productId = productId;
     }
 
-    public double getTotalBalance() {
-        return totalBalance;
+    public int getSumQuantity() {
+        return sumQuantity;
     }
 
-    public void setTotalBalance(double totalBalance) {
-        this.totalBalance = totalBalance;
+    public void setSumQuantity(int sumQuantity) {
+        this.sumQuantity = sumQuantity;
     }
 
+    public int getSumBalance() {
+        return sumBalance;
+    }
+
+    public void setSumBalance(int sumBalance) {
+        this.sumBalance = sumBalance;
+    }
 
 
 }

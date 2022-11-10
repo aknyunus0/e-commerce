@@ -1,8 +1,6 @@
 package com.yunusakin.ecommerce.controller;
 
-import com.yunusakin.ecommerce.dao.BasketRepository;
 import com.yunusakin.ecommerce.dao.ProductRepository;
-import com.yunusakin.ecommerce.model.Basket;
 import com.yunusakin.ecommerce.model.Product;
 import com.yunusakin.ecommerce.model.RequestBasket;
 import com.yunusakin.ecommerce.service.BasketService;
@@ -11,11 +9,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import java.util.List;
 import java.util.Optional;
 
 @Controller
 public class homeController {
+
     @Autowired
     ProductRepository ProductRepo;
     @Autowired
