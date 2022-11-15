@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,50 +7,40 @@
     <title>ORDER</title>
 </head>
 <body>
-${Basket}
-<div class="container3">
-    <div class="conta">
+<link href="/css/card.css" rel="stylesheet"/>
+${BasketItem}
 
-        <section class="container4">
-            <h4><b>USER INFO</b></h4>
-        </section>
 
+    <div class="container">
+        <ul class="responsive-table">
+            <li class="table-header">
+                <div class="col col-3">Product Name</div>
+                <div class="col col-2">Details</div>
+                <div class="col col-1">Quantity</div>
+                <div class="col col-1">Balance</div>
+                <div class="col col-5">Update / Delete</div>
+            </li>
+            <c:forEach items="${BasketItem}" var="basketItem">
+            <li class="table-row">
+
+                <div class="col col-3" data-label="Product Name">${basketItem.product.productName}</div>
+                <div class="col col-2" data-label="Details">${basketItem.product.productDetails}</div>
+                <div class="col col-1" data-label="Quantity"  >210
+
+                </div>
+                <div class="col col-1" data-label="Balance">$${basketItem.totalBalance}</div>
+                <div class="col col-5" data-label="Update / Delete" >
+                    <form  action="/order/${basketItem.id}" method="post">
+                    <input type="text" id="quantity" name="quantity" value=${basketItem.quantity}>
+                    <input type="hidden" id="totalBalance" name="totalBalance" value=${basketItem.product.balance}>
+                    <input  type="submit" value="Update"> </input>
+                    </form>
+                </div>
+
+            </li>
+            </c:forEach>
+        </ul>
     </div>
 
-    <div class="conta">
-        <section class="container2">
-
-
-            <form action="/order">
-
-                <input  type="submit" value="Basket"> </input>
-            </form>
-
-            <input  type="submit" value="Logout"> </input>
-
-        </section>
-
-    </div>
-
-
-</div>
-
-
-
-<link href="/css/card1.css" rel="stylesheet"/>
-
-<div class="centered">
-
-    <section class="cards">
-        <div class="card">
-            <div class="container">
-                <h4><b>John Doe</b></h4>
-                <p>Architect & Engineer</p>
-                <input type="submit" value="Add Basket"> </input>
-            </div>
-        </div>
-    </section>
-
-</div>
 </body>
 </html>

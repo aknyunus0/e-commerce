@@ -1,9 +1,7 @@
 package com.yunusakin.ecommerce.model;
 
 
-import java.util.List;
-
-public class RequestBasket {
+public class RequestBasketItem {
 
 
     public Product getProduct() {
@@ -15,6 +13,16 @@ public class RequestBasket {
     }
 
     Product product;
+
+    public Basket getBasket() {
+        return basket;
+    }
+
+    public void setBasket(Basket basket) {
+        this.basket = basket;
+    }
+
+    Basket basket;
     int quantity;
     double totalBalance;
 

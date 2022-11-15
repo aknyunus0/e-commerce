@@ -7,9 +7,40 @@ public class Basket {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
-    long productId;
-    int sumQuantity;
-    int sumBalance;
+    @Column(name = "sumBalance")
+    double sumBalance;
+
+    @Override
+    public String toString() {
+        return "Basket{" +
+                "id=" + id +
+                ", sumBalance=" + sumBalance +
+                ", status=" + status +
+                ", user=" + user +
+                '}';
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    @Column(name = "status")
+    boolean status;
+    @ManyToOne(fetch = FetchType.LAZY)
+   @JoinColumn(name = "userId",referencedColumnName = "id")
+   User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public long getId() {
         return id;
@@ -19,27 +50,12 @@ public class Basket {
         this.id = id;
     }
 
-    public long getProductId() {
-        return productId;
-    }
 
-    public void setProductId(long productId) {
-        this.productId = productId;
-    }
-
-    public int getSumQuantity() {
-        return sumQuantity;
-    }
-
-    public void setSumQuantity(int sumQuantity) {
-        this.sumQuantity = sumQuantity;
-    }
-
-    public int getSumBalance() {
+    public double getSumBalance() {
         return sumBalance;
     }
 
-    public void setSumBalance(int sumBalance) {
+    public void setSumBalance(double sumBalance) {
         this.sumBalance = sumBalance;
     }
 

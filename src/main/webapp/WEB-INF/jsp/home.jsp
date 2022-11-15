@@ -6,6 +6,7 @@
         <title><% out.println("Merhaba JSP");%></title>
     </head>
     <body>
+${userId}
     <link href="/css/card1.css" rel="stylesheet"/>
 
  <div class="centered">
