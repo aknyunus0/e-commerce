@@ -17,34 +17,7 @@ import java.util.List;
 
 @Controller
 public class orderController {
-    @Autowired
-    BasketService serviceBasket;
-    @Autowired
-    BasketItemRepository BasketItemRepo;
-    @Autowired
-    BasketRepository basketRepository;
-    @RequestMapping("/order")
-    public String homePage(){
-        return "order";
-    }
-
-    @RequestMapping(value = "/order/{id}",method = RequestMethod.POST)
-    public ModelAndView setBasketUpdate(@PathVariable(value = "id" )int id, RequestBasketItem request){
-        serviceBasket.updateByid(id,request);
-        serviceBasket.updateSumBalanceInBasket();
 
 
-        return getAllBasket();
-    }
-
-    @RequestMapping(value = "/order",method = RequestMethod.GET)
-    public ModelAndView getAllBasket() {
-       ModelAndView mv = new ModelAndView("index");
-        Basket basket= basketRepository.getbyUserId(serviceBasket.getUserId());
-        List<BasketItem> basketItems = BasketItemRepo.getbyBasketId(basket.getId());
-        mv.addObject("BasketItem", basketItems);
-        mv.setViewName("order");
-        return mv;
-    }
 
 }

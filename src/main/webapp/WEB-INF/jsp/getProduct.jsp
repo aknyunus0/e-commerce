@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>PRODUCT</title>
 </head>
 <body>
  <div class="container3">
@@ -19,12 +19,19 @@
     <section class="container2">
 
 
-<form action="/order">
+<form action="/basket">
 
     <input  type="submit" value="Basket"> </input>
 </form>
+        <form action="/order">
 
-        <input  type="submit" value="Logout"> </input>
+            <input  type="submit" value="Orders"> </input>
+        </form>
+
+<form action="/logout">
+    <input  type="submit" value="Logout"> </input>
+</form>
+
 
     </section>
 
