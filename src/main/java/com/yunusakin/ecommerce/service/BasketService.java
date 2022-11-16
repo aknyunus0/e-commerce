@@ -51,6 +51,10 @@ public class BasketService {
         basketItemRepository.update(request.getQuantity(), request.getTotalBalance(), id);
 
     }
+
+    public void delete(long id){
+        basketItemRepository.deleteById(id);
+    }
     public  void updateStatusBasket(boolean status,long basketId,long id){
         basketRepository.updateStatus(status,basketId ,id);
     }

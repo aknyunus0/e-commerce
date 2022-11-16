@@ -31,11 +31,23 @@ public class basketController {
         return "basket";
     }
 
-    @RequestMapping(value = "/basket/{id}",method = RequestMethod.POST)
+    @RequestMapping(value = "/basket/up/{id}",method = RequestMethod.POST)
     public ModelAndView setBasketUpdate(@PathVariable(value = "id" )int id, RequestBasketItem request){
+        if(request.getQuantity()==0)
+        {
+            serviceBasket.delete(id);
+            serviceBasket.updateSumBalanceInBasket();
+            return getAllBasket();
+        }
         serviceBasket.updateByid(id,request);
         serviceBasket.updateSumBalanceInBasket();
+        return getAllBasket();
+    }
 
+    @RequestMapping(value = "/basket/del/{id}",method = RequestMethod.POST)
+    public ModelAndView delBasketItem(@PathVariable(value = "id" )int id){
+        serviceBasket.delete(id);
+        serviceBasket.updateSumBalanceInBasket();
 
         return getAllBasket();
     }
